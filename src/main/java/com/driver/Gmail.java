@@ -66,21 +66,22 @@ public class Gmail extends Email {
         }
 
     }
-//
-//    public String findOldestMessage(){
-//        // If the inbox is empty, return null
-//        // Else, return the message of the oldest mail present in the inbox
-//        if(Inbox.size()==0){
-//            return null;
-//        }else{
-//            return Inbox.pollFirst().getMessage();
-//        }
-//    }
-//
-//
-//
-//
-//
+
+    public String findOldestMessage(){
+        // If the inbox is empty, return null
+        // Else, return the message of the oldest mail present in the inbox
+        if(Inbox.size()==0){
+            return null;
+        }else{
+            Date date=Inbox.firstKey();
+            return Inbox.get(date).getMessage();
+        }
+    }
+
+
+
+
+
     public int findMailsBetweenDates(Date start, Date end) throws ParseException {
         //find number of mails in the inbox which are received between given dates
         //It is guaranteed that start date <= end date
@@ -120,10 +121,10 @@ public class Gmail extends Email {
 
     }
 
-//    public int getInboxCapacity() {
-//        // Return the maximum number of mails that can be stored in the inbox
-//        return  this.inboxSize;
-//    }
+    public int getInboxCapacity() {
+        // Return the maximum number of mails that can be stored in the inbox
+        return  this.inboxSize;
+    }
 }
 
 class EmailId{
