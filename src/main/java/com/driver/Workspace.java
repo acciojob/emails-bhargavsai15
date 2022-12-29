@@ -23,7 +23,7 @@ public class Workspace extends Gmail{
         super.inboxCapacity=Integer.MAX_VALUE;
     }
 
-    @Override
+
     public int getInboxCapacity() {
         return super.inboxCapacity;
     }
