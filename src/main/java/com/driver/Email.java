@@ -10,6 +10,7 @@ public class Email {
         this.password = "Accio@123";
     }
 
+
     public String getEmailId() {
         return emailId;
     }
@@ -25,5 +26,42 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
+        if(this.password.equals(oldPassword)){
+            if(newPassword.length()>=8 && checkCaseAndDigit(newPassword) && checkSpecialChar(newPassword)){
+                this.password=newPassword;
+            }
+        }
     }
+
+    public static boolean checkCaseAndDigit(String pass){
+        int flag1=0,flag2=0,flag3=0;
+        for(int i=0;i< pass.length();i++){
+            char c=pass.charAt(i);
+            if(Character.isUpperCase(c)){
+                flag1=1;
+            }
+            if(Character.isLowerCase(c)){
+                flag2=1;
+            }
+            if(Character.isDigit(c)){
+                flag3=1;
+            }
+            if(flag1==1 && flag2==1 && flag3==1){
+                return  true;
+            }
+        }
+        return  false;
+    }
+
+    public  static  boolean checkSpecialChar(String pass){
+        for(int i=0;i<pass.length();i++){
+            char c=pass.charAt(i);
+            if(!Character.isDigit(c) && !Character.isLetter(c)){
+                return true;
+            }
+        }
+        return  false;
+    }
+
+
 }
