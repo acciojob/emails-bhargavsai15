@@ -91,8 +91,12 @@ public class Gmail extends Email {
         //It is guaranteed that start date <= end date
         int count=0;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date date1 = sdf.parse(String.valueOf(start));
-        Date date2 = sdf.parse(String.valueOf(end));
+        System.out.println(String.valueOf(start));
+        String s1 = sdf.format(start);
+        String s2 = sdf.format(end);
+
+        Date date1=sdf.parse(s1);
+        Date date2=sdf.parse(s2);
 
         for(int i=0;i<Inbox.size();i++){
             Date date3=Inbox.get(i).date;

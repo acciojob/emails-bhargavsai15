@@ -10,11 +10,11 @@ import java.util.Date;
 
 public class Workspace extends Gmail{
 
-    private ArrayList<Meeting> calendar; // Stores all the meetings
+    private ArrayList<Meeting> calendar=new ArrayList<>(); // Stores all the meetings
 
-    private ArrayList<LocalTime> startTime;
+    private ArrayList<LocalTime> startTime=new ArrayList<>();
 
-    private ArrayList<LocalTime> endTime;
+    private ArrayList<LocalTime> endTime=new ArrayList<>();
 
 
     public Workspace(String emailId) {
@@ -23,9 +23,14 @@ public class Workspace extends Gmail{
         super.inboxCapacity=Integer.MAX_VALUE;
     }
 
+    @Override
+    public int getInboxCapacity() {
+        return super.inboxCapacity;
+    }
+
     public void addMeeting(Meeting meeting){
         //add the meeting to calendar
-        calendar.add(meeting);
+        calendar.add(new Meeting(meeting.getStartTime(),meeting.getEndTime()));
     }
 
 
