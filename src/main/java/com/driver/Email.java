@@ -26,15 +26,15 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
-        if(getPassword().equals(oldPassword)){
-            if(newPassword.length()>=8 && checkCaseAndDigit(newPassword) && checkSpecialChar(newPassword)){
+        if(oldPassword.equals(newPassword)){
+            if(newPassword.length()>=8 && isValid(newPassword)){
                 this.password=newPassword;
             }
         }
     }
 
-    public static boolean checkCaseAndDigit(String pass){
-        int flag1=0,flag2=0,flag3=0;
+    public static boolean isValid(String pass){
+        int flag1=0,flag2=0,flag3=0,flag4=0;
         for(int i=0;i< pass.length();i++){
             char c=pass.charAt(i);
             if(Character.isUpperCase(c)){
@@ -46,18 +46,11 @@ public class Email {
             if(Character.isDigit(c)){
                 flag3=1;
             }
-        }
-        return  flag1==1 && flag2==1 && flag3==1;
-    }
-
-    public  static  boolean checkSpecialChar(String pass){
-        for(int i=0;i<pass.length();i++){
-            char c=pass.charAt(i);
             if(!Character.isDigit(c) && !Character.isLetter(c)){
-                return true;
+                flag4=1;
             }
         }
-        return  false;
+        return  flag1==1 && flag2==1 && flag3==1 && flag4==1;
     }
 
 

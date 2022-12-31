@@ -19,8 +19,7 @@ public class Workspace extends Gmail{
 
     public Workspace(String emailId) {
         // The inboxCapacity is equal to the maximum value an integer can store.
-        super(emailId);
-        super.inboxCapacity=Integer.MAX_VALUE;
+        super(emailId,Integer.MAX_VALUE);
     }
 
 
@@ -30,7 +29,7 @@ public class Workspace extends Gmail{
 
     public void addMeeting(Meeting meeting){
         //add the meeting to calendar
-        calendar.add(new Meeting(meeting.getStartTime(),meeting.getEndTime()));
+        calendar.add(meeting);
     }
 
 
